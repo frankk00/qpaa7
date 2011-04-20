@@ -1,0 +1,17 @@
+application: qpfc-aa7
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /javascript
+  static_dir: iWebKit5.04/Framework/javascript
+
+- url: /css
+  static_dir: iWebKit5.04/Framework/css
+
+- url: /images
+  static_dir: images
+
+- url: /.*
+  script: app.py

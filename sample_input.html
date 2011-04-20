@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0039)http://www.blasldkjasds.com/qpfc/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Queens Park Soccer</title>
+<style media="all" type="text/css">
+	@import "css/global/base.css";
+	@import "css/build/main.css";
+	@import "css/plugin/tablesorter.css";
+</style>
+<script src="jquery-1.5.1.min.js" type="text/javascript"></script>
+<script src="jquery.tablesorter.min.js" type="text/javascript"></script>
+<script src="jquery.timeout.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("table.tablesorter").tablesorter({widgets: ['zebra']});
+	$("div.success, div.fail").fadeIn('slow').idle(5000).fadeOut('slow');
+	$("table.tablesorter a.player").bind("click", function(e) {
+		e.preventDefault();
+		
+		if ( !$("#edit").hasClass("open") ) {
+			$("#edit").addClass("open").slideDown();
+		}
+		else $("#edit").fadeTo('fast', 0.1).fadeTo('fast', 1);
+		
+		var obj = eval("(" + $(this).attr("name") + ")");
+		for( index in obj ){
+			element = $("input[name=" + index + "]");
+			if ( element.length > 0 ) element.val(obj[index]);
+		}
+		
+		if ( obj.available == true ){ $("a.btn.green").addClass("selected"); $("a.btn.red").removeClass("selected");}
+		else if (obj.available == false ){ $("a.btn.red").addClass("selected"); $("a.btn.green").removeClass("selected");}
+	});
+	
+	$("#edit a.btn").bind("click", function(e){
+		e.preventDefault();
+		var bool = $(this).attr("name");
+		$("#edit input[name='available']").val( bool );
+		if ( !$(this).hasClass("selected") ){ $("#edit a.btn").removeClass("selected"); $(this).addClass("selected"); }
+	});
+	
+	$("#login a.login").bind("click", function(e){
+		e.preventDefault();
+		$("#login div.loginDetails").fadeIn();
+	});
+	
+	$("#login input[type='text']").bind("focus", function(){
+		if ( $(this).val() == $(this).attr("alt") ) $(this).val("");
+	});
+	$("#login input[type='text']").bind("blur", function(){
+		if ( $(this).val() == "" ) $(this).val( $(this).attr("alt") );
+	});
+});
+</script>
+</head>
+
+<body>
+<div id="login">
+	<a href="http://www.blasldkjasds.com/qpfc/#" class="login">Login</a>
+	<div class="loginDetails" style="display:none;"><form method="post" action="http://www.blasldkjasds.com/qpfc/index.php">
+		<input name="username" type="text" value="Enter user/pass" alt="Enter user/pass">
+		<input name="password" type="password">
+		<input name="login" type="submit" value="Login">
+	</form></div>
+</div>
+
+<div id="main">
+	<div class="match">
+		<h1>Next match: Tuesday, 26th August</h1>
+		<h2>Heffron 55<span>9:00 AM</span></h2>
+		<a href="http://maps.google.com.au/maps?f=q&source=s_q&hl=en&geocode=&q=Heffron+Park,+Sydney,+New+South+Wales&aq=0&sll=-33.95347,151.241097&sspn=0.032501,0.052314&ie=UTF8&hq=&hnear=&ll=-33.95105,151.237128&spn=0.016251,0.026157&z=16" target="_blank">http://maps.google.com.au/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Heffron+Park,+Sydney,+New+South+Wales&amp;aq=0&amp;sll=-33.95347,151.241097&amp;sspn=0.032501,0.052314&amp;ie=UTF8&amp;hq=&amp;hnear=&amp;ll=-33.95105,151.237128&amp;spn=0.016251,0.026157&amp;z=16</a>
+	</div>
+		<table class="tablesorter">
+		<thead>
+			<tr>
+				<th class="header">Name</th>
+				<th class="header">Contact number</th>
+				<th class="header">Email</th>
+				<th class="header">Position</th>
+				<th class="header">Goals</th>
+				<th class="header">Games missed</th>
+				<th class="header">Shirts</th>
+				<th class="header">Beers</th>
+				<th class="header">Available</th>
+			</tr>
+		</thead>
+		<tbody>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:1, &#39;name&#39;:&#39;Carlene Barish&#39;, &#39;contact&#39;:&#39;116x 880 435&#39;, &#39;email&#39;:&#39;Carlene.Barish@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;GK&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Carlene Barish</a></td>
+                <td align="center">116x 880 435</td>
+                <td><a href="mailto:Carlene.Barish@doesnotexist.com.au">Carlene.Barish@doesnotexist.com.au</a></td>
+                <td width="78" align="center">GK</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:2, &#39;name&#39;:&#39;Lance Slinkard&#39;, &#39;contact&#39;:&#39;563x 658 258&#39;, &#39;email&#39;:&#39;Lance.Slinkard@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;LB/CB&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Lance Slinkard</a></td>
+                <td align="center">563x 658 258</td>
+                <td><a href="mailto:Lance.Slinkard@doesnotexist.com.au">Lance.Slinkard@doesnotexist.com.au</a></td>
+                <td width="78" align="center">LB/CB</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:3, &#39;name&#39;:&#39;Cody Helf&#39;, &#39;contact&#39;:&#39;102x 395 812&#39;, &#39;email&#39;:&#39;Cody.Helf@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CB&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Cody Helf</a></td>
+                <td align="center">102x 395 812</td>
+                <td><a href="mailto:Cody.Helf@doesnotexist.com.au">Cody.Helf@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CB</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:4, &#39;name&#39;:&#39;Kurt Kindrick&#39;, &#39;contact&#39;:&#39;127x 561 774&#39;, &#39;email&#39;:&#39;Kurt.Kindrick@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CB&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Kurt Kindrick</a></td>
+                <td align="center">127x 561 774</td>
+                <td><a href="mailto:Kurt.Kindrick@doesnotexist.com.au">Kurt.Kindrick@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CB</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:5, &#39;name&#39;:&#39;Tabatha Goe&#39;, &#39;contact&#39;:&#39;061x 687 155&#39;, &#39;email&#39;:&#39;Tabatha.Goe@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CB&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Tabatha Goe</a></td>
+                <td align="center">061x 687 155</td>
+                <td><a href="mailto:Tabatha.Goe@doesnotexist.com.au">Tabatha.Goe@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CB</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:6, &#39;name&#39;:&#39;Max Moraga&#39;, &#39;contact&#39;:&#39;198x 977 395&#39;, &#39;email&#39;:&#39;Max.Moraga@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;RB&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Max Moraga</a></td>
+                <td align="center">198x 977 395</td>
+                <td><a href="mailto:Max.Moraga@doesnotexist.com.au">Max.Moraga@doesnotexist.com.au</a></td>
+                <td width="78" align="center">RB</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:7, &#39;name&#39;:&#39;Lilia Lanasa&#39;, &#39;contact&#39;:&#39;028x 394 321&#39;, &#39;email&#39;:&#39;Lilia.Lanasa@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;RB/CM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Lilia Lanasa</a></td>
+                <td align="center">028x 394 321</td>
+                <td><a href="mailto:Lilia.Lanasa@doesnotexist.com.au">Lilia.Lanasa@doesnotexist.com.au</a></td>
+                <td width="78" align="center">RB/CM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:8, &#39;name&#39;:&#39;Hugh Sepeda&#39;, &#39;contact&#39;:&#39;495x 121 309&#39;, &#39;email&#39;:&#39;Hugh.Sepeda@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CB/CM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Hugh Sepeda</a></td>
+                <td align="center">495x 121 309</td>
+                <td><a href="mailto:Hugh.Sepeda@doesnotexist.com.au">Hugh.Sepeda@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CB/CM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:9, &#39;name&#39;:&#39;Jerri Katon&#39;, &#39;contact&#39;:&#39;829x 338 070&#39;, &#39;email&#39;:&#39;Jerri.Katon@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CDM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Jerri Katon</a></td>
+                <td align="center">829x 338 070</td>
+                <td><a href="mailto:Jerri.Katon@doesnotexist.com.au">Jerri.Katon@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CDM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:10, &#39;name&#39;:&#39;Harriett Hintze&#39;, &#39;contact&#39;:&#39;011x 258 044&#39;, &#39;email&#39;:&#39;Harriett.Hintze@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Harriett Hintze</a></td>
+                <td align="center">011x 258 044</td>
+                <td><a href="mailto:Harriett.Hintze@doesnotexist.com.au">Harriett.Hintze@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:11, &#39;name&#39;:&#39;Loraine Puterbaugh&#39;, &#39;contact&#39;:&#39;560x 189 378&#39;, &#39;email&#39;:&#39;Loraine.Puterbaugh@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Loraine Puterbaugh</a></td>
+                <td align="center">560x 189 378</td>
+                <td><a href="mailto:Loraine.Puterbaugh@doesnotexist.com.au">Loraine.Puterbaugh@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:12, &#39;name&#39;:&#39;Mathew Courtemanche&#39;, &#39;contact&#39;:&#39;832x 220 201&#39;, &#39;email&#39;:&#39;Mathew.Courtemanche@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CM/RM/LM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Mathew Courtemanche</a></td>
+                <td align="center">832x 220 201</td>
+                <td><a href="mailto:Mathew.Courtemanche@doesnotexist.com.au">Mathew.Courtemanche@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CM/RM/LM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:13, &#39;name&#39;:&#39;Elinor Otani&#39;, &#39;contact&#39;:&#39;915x 648 378&#39;, &#39;email&#39;:&#39;Elinor.Otani@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CM/RM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Elinor Otani</a></td>
+                <td align="center">915x 648 378</td>
+                <td><a href="mailto:Elinor.Otani@doesnotexist.com.au">Elinor.Otani@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CM/RM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:14, &#39;name&#39;:&#39;Javier Topp&#39;, &#39;contact&#39;:&#39;351x 331 104&#39;, &#39;email&#39;:&#39;Javier.Topp@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;LM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Javier Topp</a></td>
+                <td align="center">351x 331 104</td>
+                <td><a href="mailto:Javier.Topp@doesnotexist.com.au">Javier.Topp@doesnotexist.com.au</a></td>
+                <td width="78" align="center">LM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:15, &#39;name&#39;:&#39;Rae Ryer&#39;, &#39;contact&#39;:&#39;499x 987 162&#39;, &#39;email&#39;:&#39;Rae.Ryer@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CAM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Rae Ryer</a></td>
+                <td align="center">499x 987 162</td>
+                <td><a href="mailto:Rae.Ryer@doesnotexist.com.au">Rae.Ryer@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CAM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:16, &#39;name&#39;:&#39;Katy Boyton&#39;, &#39;contact&#39;:&#39;923x 864 778&#39;, &#39;email&#39;:&#39;Katy.Boyton@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;CAM&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Katy Boyton</a></td>
+                <td align="center">923x 864 778</td>
+                <td><a href="mailto:Katy.Boyton@doesnotexist.com.au">Katy.Boyton@doesnotexist.com.au</a></td>
+                <td width="78" align="center">CAM</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:17, &#39;name&#39;:&#39;Nelson Kary&#39;, &#39;contact&#39;:&#39;106x 965 322&#39;, &#39;email&#39;:&#39;Nelson.Kary@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;FW/W&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Nelson Kary</a></td>
+                <td align="center">106x 965 322</td>
+                <td><a href="mailto:Nelson.Kary@doesnotexist.com.au">Nelson.Kary@doesnotexist.com.au</a></td>
+                <td width="78" align="center">FW/W</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:18, &#39;name&#39;:&#39;Allan Jepsen&#39;, &#39;contact&#39;:&#39;476x 467 919&#39;, &#39;email&#39;:&#39;Allan.Jepsen@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;FW&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Allan Jepsen</a></td>
+                <td align="center">476x 467 919</td>
+                <td><a href="mailto:Allan.Jepsen@doesnotexist.com.au">Allan.Jepsen@doesnotexist.com.au</a></td>
+                <td width="78" align="center">FW</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:19, &#39;name&#39;:&#39;Gay Shippee&#39;, &#39;contact&#39;:&#39;827x 069 024&#39;, &#39;email&#39;:&#39;Gay.Shippee@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;FW/W&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Gay Shippee</a></td>
+                <td align="center">827x 069 024</td>
+                <td><a href="mailto:Gay.Shippee@doesnotexist.com.au">Gay.Shippee@doesnotexist.com.au</a></td>
+                <td width="78" align="center">FW/W</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="even">
+                <td><a href="#" class="player" name="{&#39;id&#39;:20, &#39;name&#39;:&#39;Roslyn Mandelbaum&#39;, &#39;contact&#39;:&#39;110x 883 597&#39;, &#39;email&#39;:&#39;Roslyn.Mandelbaum@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;FW&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Roslyn Mandelbaum</a></td>
+                <td align="center">110x 883 597</td>
+                <td><a href="mailto:Roslyn.Mandelbaum@doesnotexist.com.au">Roslyn.Mandelbaum@doesnotexist.com.au</a></td>
+                <td width="78" align="center">FW</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+            <tr class="odd">
+                <td><a href="#" class="player" name="{&#39;id&#39;:21, &#39;name&#39;:&#39;Melisa Dunnington&#39;, &#39;contact&#39;:&#39;059x 783 323&#39;, &#39;email&#39;:&#39;Melisa.Dunnington@doesnotexist.com.au&#39;, &#39;position&#39;:&#39;FW&#39;, &#39;goals&#39;:0, &#39;games&#39;:0, &#39;shirts&#39;:0, &#39;beers&#39;:0, &#39;available&#39;:0}">Melisa Dunnington</a></td>
+                <td align="center">059x 783 323</td>
+                <td><a href="mailto:Melisa.Dunnington@doesnotexist.com.au">Melisa.Dunnington@doesnotexist.com.au</a></td>
+                <td width="78" align="center">FW</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center">0</td>
+                <td align="center" class="red">No</td>
+            </tr>
+		</tbody>
+	</table>
+	
+	<table width="0" border="0" align="center" cellpadding="0" cellspacing="1" class="tasks">
+		<thead>
+			<tr>
+				<th width="200" align="center">Beers:</th>
+				<th width="200" align="center">Shirts:</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td width="200" height="20" align="center">Person bringing beers?</td>
+				<td width="200" align="center">Loraine</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div id="edit"><form method="post" action="http://www.blasldkjasds.com/qpfc/index.php">
+		<table width="0" border="0" cellspacing="1" cellpadding="0">
+			<tbody><tr>
+				<td width="192" class="title">Name:</td>
+				<td><input type="text" name="name" maxlength="50"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Contact number:</td>
+				<td><input type="text" name="contact" maxlength="20"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Email:</td>
+				<td><input type="text" name="email" maxlength="40"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Position:</td>
+				<td><input type="text" name="position" maxlength="20"></td>
+			</tr>
+		</tbody></table>
+		<table width="0" border="0" cellspacing="1" cellpadding="0">
+			<tbody><tr>
+				<td width="192" class="title">Goals:</td>
+				<td><input type="text" name="goals" maxlength="11"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Shirts:</td>
+				<td><input type="text" name="shirts" maxlength="11"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Beers:</td>
+				<td><input type="text" name="beers" maxlength="11"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Games missed:</td>
+				<td><input type="text" name="games" maxlength="11"></td>
+			</tr>
+			<tr>
+				<td width="192" class="title">Available next match:</td>
+				<td>
+					<a href="http://www.blasldkjasds.com/qpfc/#" class="btn green pad selected" name="1">Yes</a>
+					<a href="http://www.blasldkjasds.com/qpfc/#" class="btn red" name="0">No</a>
+					<input type="hidden" name="available">
+					<div class="clear"></div>
+				</td>
+			</tr>
+		</tbody></table>
+		<div style="text-align:center;">
+			<input type="hidden" name="id" value="none">
+			<input type="submit" name="update" value="Update player details">
+		</div>
+	</form></div>
+</div>
+
+
+</body></html>
