@@ -1,0 +1,6 @@
+This is an example python Google AppEngine site that scrapes another website
+then creates an iPhone webapp page.
+
+- BeautifulSoup for web page parsing
+- iWebKit for styling the iPhone page
+- sample_input.html is what the original web page looked like
